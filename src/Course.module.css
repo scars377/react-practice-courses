@@ -1,0 +1,28 @@
+.course {
+  display: flex;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+}
+
+.cover {
+  flex: 0 0 200px;
+  height: 150px;
+  background: center center no-repeat;
+  background-size: cover;
+}
+
+.info {
+  flex: 1;
+  font-family: Microsoft JhengHei;
+  padding: 0.5em;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: bolder;
+  color: #369;
+}
+
+.teacher {
+  margin-right: 1em;
+}
