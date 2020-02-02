@@ -3,19 +3,23 @@ import style from './Course.module.css';
 
 class Course extends Component {
   render() {
-    const { title, cover, teachers } = this.props;
+    const {
+      title,
+      thumbnails: { w300 },
+      lecturers,
+    } = this.props;
     return (
       <div className={style.course}>
         <div
           className={style.cover}
           style={{
-            backgroundImage: `url('${cover}')`,
+            backgroundImage: `url('${w300}')`,
           }}
         />
         <div className={style.info}>
           <div className={style.title}>{title}</div>
-          {teachers.map((teacher) => (
-            <label className={style.teacher}>{teacher.username}</label>
+          {lecturers.map(lecturer => (
+            <label className={style.teacher}>{lecturer.username}</label>
           ))}
         </div>
       </div>

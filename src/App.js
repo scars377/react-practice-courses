@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Course from './Course';
 
-const api =
-  'https://hiskio.com/api/v1/courses/professions?type=all&level=all&sort=latest&profession_id=2';
+const api = 'https://api.hiskio.com/v1/courses?profession_id=1';
 
 class App extends Component {
   state = {
@@ -28,16 +27,16 @@ class App extends Component {
       this.fetchData(next);
     }
   };
-  fetchData = (url) => {
+  fetchData = url => {
     this.setState({
       loading: true,
     });
     fetch(url)
-      .then((rs) => rs.json())
-      .then((data) => {
+      .then(rs => rs.json())
+      .then(data => {
         this.setState({
-          courses: [...this.state.courses, ...data.courses],
-          next: data.paginate.next_page_url,
+          courses: [...this.state.courses, ...data.data],
+          next: data.links.next,
           loading: false,
         });
       });
@@ -46,7 +45,7 @@ class App extends Component {
     const { courses } = this.state;
     return (
       <div>
-        {courses.map((course) => (
+        {courses.map(course => (
           <Course key={course.id} {...course} />
         ))}
       </div>
